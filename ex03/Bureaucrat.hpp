@@ -2,9 +2,9 @@
 # define BUREAUCRAT_HPP
 
 # include <iostream>
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -29,11 +29,11 @@ class Bureaucrat
 		~Bureaucrat();
 
 		const std::string	getName() const;
-		int			getGrade() const;
+		int					getGrade() const;
 
 		void	incrementGrade();
 		void	decrementGrade();
-		void	signForm(Form& form);
+		void	signForm(AForm& form);
 };
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& b);//<<스트림 출력 연산자를 오버라이드

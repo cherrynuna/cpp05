@@ -5,12 +5,12 @@ int	main(void)
 	try
 	{
 		Bureaucrat	elsa("Elsa", 1);
-		// elsa.decrementGrade();
-		// elsa.incrementGrade();
+		elsa.decrementGrade();
+		elsa.incrementGrade();
 		std::cout << elsa << std::endl;
 		Bureaucrat	anna("Anna", 150);
-		// anna.decrementGrade();
-		// anna.incrementGrade();
+		anna.decrementGrade();
+		anna.incrementGrade();
 		std::cout << anna << std::endl;
 		Bureaucrat	chris("Chris", 151);
 		std::cout << chris << std::endl;

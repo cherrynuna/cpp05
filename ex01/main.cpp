@@ -11,11 +11,14 @@ int	main(void)
 		Bureaucrat	anna("Anna", 9);
 		std::cout << anna << std::endl;
 
-		AForm	passport("Passport", 8, 9);
-		AForm	martialLaw("Martial Law", 0, 7);
-		AForm	meetingPermit("Meeting Permit", 151, 7);
+		Form	passport("Passport", 8, 9);
+		Form	martialLaw1("Martial Law", 0, 7);
+		Form	martialLaw2("Martial Law", 1, 7);
+		Form	meetingPermit1("Meeting Permit", 151, 7);
+		Form	meetingPermit2("Meeting Permit", 150, 7);
 
 		std::cout << passport << std::endl;
+		anna.signForm(passport);
 		elsa.signForm(passport);
 		anna.signForm(passport);
 		std::cout << passport << std::endl;

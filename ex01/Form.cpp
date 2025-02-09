@@ -1,16 +1,16 @@
 #include "Form.hpp"
 
-AForm::AForm(const std::string& name, const int& sign, const int& execute) : name(name), isSigned(0), sign(sign), execute(execute)
+Form::Form(const std::string& name, const int& signGrade, const int& executeGrade) : name(name), isSigned(0), signGrade(signGrade), executeGrade(executeGrade)
 {
-	if (sign < 1 || execute < 1)
+	if (signGrade < 1 || executeGrade < 1)
 		throw GradeTooHighException();
-	if (sign > 150 || execute > 150)
+	if (signGrade > 150 || executeGrade > 150)
 		throw GradeTooLowException();
 }
 
-AForm::AForm(const AForm& obj) : name(obj.name), isSigned(0), sign(obj.sign), execute(obj.execute) {}
+Form::Form(const Form& obj) : name(obj.name), isSigned(0), signGrade(obj.signGrade), executeGrade(obj.executeGrade) {}
 
-AForm&	AForm::operator=(const AForm& obj)
+Form&	Form::operator=(const Form& obj)
 {
 	// if (this != &obj)
 		
@@ -18,46 +18,46 @@ AForm&	AForm::operator=(const AForm& obj)
 	return (*this);
 }
 
-AForm::~AForm() {}
+Form::~Form() {}
 
-const std::string&	AForm::getName() const
+const std::string&	Form::getName() const
 {
 	return (this->name);
 }
 
-const bool&			AForm::getIsSigned() const
+const bool&			Form::getIsSigned() const
 {
 	return (this->isSigned);
 }
 
-const int&			AForm::getSign() const
+const int&			Form::getSignGrade() const
 {
-	return (this->sign);
+	return (this->signGrade);
 }
 
-const int&			AForm::getExecute() const
+const int&			Form::getExecuteGrade() const
 {
-	return (this->execute);
+	return (this->executeGrade);
 }
 
-void	AForm::beSigned(const Bureaucrat& bureaucrat)
+void	Form::beSigned(const Bureaucrat& bureaucrat)
 {
-	if (this->sign < bureaucrat.getGrade())
+	if (this->signGrade < bureaucrat.getGrade())
 		throw GradeTooLowException();
 	this->isSigned = 1;
 }
 
-const char*	AForm::GradeTooHighException::what() const throw()//클래스의 클래스의 what함수의 동작 구현
+const char*	Form::GradeTooHighException::what() const throw()//클래스의 클래스의 what함수의 동작 구현
 {
 	return ("Grade is too high!");
 }
 
-const char*	AForm::GradeTooLowException::what() const throw()
+const char*	Form::GradeTooLowException::what() const throw()
 {
 	return ("Grade is too low!");
 }
 
-std::ostream& operator<<(std::ostream& out, const AForm& b)
+std::ostream& operator<<(std::ostream& out, const Form& b)
 {
 	std::string	isSigned;
 	
@@ -65,7 +65,7 @@ std::ostream& operator<<(std::ostream& out, const AForm& b)
 		isSigned = "signed";
 	else
 		isSigned = "not signed";
-	out << b.getName() << " can be singed by higher than " << b.getSign() << " and executed by higher than " << b.getExecute() << ", and it is " << isSigned;
+	out << b.getName() << " can be signed by higher than " << b.getSignGrade() << " and executed by higher than " << b.getExecuteGrade() << ", and it is " << isSigned;
 
 	return (out);
 }
