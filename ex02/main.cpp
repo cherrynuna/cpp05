@@ -23,7 +23,6 @@ int	main(void)
 		ShrubberyCreationForm	scf("gaepo");
 		std::cout << scf << std::endl;
 		anna.signForm(scf);//->beSigned->Form::GradeTooLowException
-		std::cout << scf << std::endl;
 		elsa.signForm(scf);
 		std::cout << scf << std::endl;
 		anna.signForm(scf);//already signed
