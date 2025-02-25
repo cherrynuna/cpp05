@@ -72,3 +72,12 @@ void	Bureaucrat::signForm(AForm& form)
 		std::cout << this->name << " signed the form with the target " << form.getTarget() << "." << std::endl;
 	}
 }
+
+void	Bureaucrat::executeForm(const AForm& form)
+{
+	if (!(form.getIsSigned()))
+		throw AForm::FormNotSignedException();
+	if (this->grade > form.getExecuteGrade())
+		throw AForm::GradeTooLowException();
+	form.execute(*this);
+}

@@ -14,12 +14,13 @@ RobotomyRequestForm::~RobotomyRequestForm() {}
 
 void	RobotomyRequestForm::execute(const Bureaucrat& executor) const
 {
+	(void) executor;
 	static bool initialized = false;
-    if (!initialized)//프로그램 시작 시 한 번만 호출
+	if (!initialized)//프로그램 시작 시 한 번만 호출
 	{
-        std::srand(std::time(0));  // 동일한 난수 패턴이지만+매번 다른 시드로 다른 값이 나오게
-        initialized = true;
-    }
+		std::srand(std::time(0));  // 동일한 난수 패턴이지만+매번 다른 시드로 다른 값이 나오게
+		initialized = true;
+	}
 
 	std::cout << "*drilling noises*" << std::endl;
 

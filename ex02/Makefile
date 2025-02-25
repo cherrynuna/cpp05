@@ -20,6 +20,7 @@ ${NAME}	:	${OBJS}
 clean	:
 	@${RM} ${OBJS}
 	@echo "clear"
+	@rm gaepo_shrubbery
 
 fclean	:	clean
 	@${RM} ${NAME}

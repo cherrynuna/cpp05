@@ -26,7 +26,7 @@ int	main(void)
 		if (!form)
 			return (0);
 		elsa.signForm(*form);
-		form->execute(olaf);
+		olaf.executeForm(*form);
 		delete form;
 
 		std::cout << std::endl;
@@ -38,7 +38,7 @@ int	main(void)
 			return (0);
 		anna.signForm(*form);
 		elsa.signForm(*form);
-		form->execute(olaf);
+		olaf.executeForm(*form);
 		delete form;
 
 		std::cout << std::endl;
@@ -49,7 +49,7 @@ int	main(void)
 		if (!form)
 			return (0);
 		elsa.signForm(*form);
-		form->execute(olaf);
+		olaf.executeForm(*form);
 	}
 	catch (const std::exception& e)
 	{
