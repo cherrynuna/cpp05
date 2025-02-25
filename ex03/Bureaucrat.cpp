@@ -1,12 +1,11 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(const std::string& name, const int& grade) : name(name)
+Bureaucrat::Bureaucrat(const std::string& name, const int& grade) : name(name), grade(grade)
 {
 	if (grade < 1)
 		throw GradeTooHighException();
 	if (grade > 150)
 		throw GradeTooLowException();
-	this->grade = grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& obj) : name(obj.name)
@@ -21,9 +20,7 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& obj)
 	return (*this);
 }
 
-Bureaucrat::~Bureaucrat()
-{
-}
+Bureaucrat::~Bureaucrat() {}
 
 const std::string	Bureaucrat::getName() const
 {
@@ -49,21 +46,7 @@ void		Bureaucrat::decrementGrade()
 	(this->grade)++;
 }
 
-void	Bureaucrat::signForm(AForm& form)
-{
-	if (form.getIsSigned())
-		std::cout << this->name << " couldn’t sign the form with the target " << form.getTarget() << " because it's already signed." << std::endl;
-	else if (this->grade > form.getSignGrade())
-		// std::cout << this->name << " couldn’t sign the AForm with the target " << form.getTarget() << " because the grade is too low!" << std::endl;
-		throw GradeTooLowException();
-	else
-	{
-		form.beSigned(*this);
-		std::cout << this->name << " signed the form with the target " << form.getTarget() << "." << std::endl;
-	}
-}
-
-const char*	Bureaucrat::GradeTooHighException::what() const throw()//클래스의 클래스의 what함수의 동작 구현
+const char*	Bureaucrat::GradeTooHighException::what() const throw()//클래스의 what함수의 동작 구현
 {
 	return ("Grade is too high!");
 }
@@ -77,4 +60,15 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& b)
 {
 	out << b.getName() << ", bureaucrat grade " << b.getGrade();
 	return out;
+}
+
+void	Bureaucrat::signForm(AForm& form)
+{
+	if (form.getIsSigned())
+		std::cout << this->name << " couldn’t sign the form with the target " << form.getTarget() << " because it's already signed." << std::endl;
+	else
+	{
+		form.beSigned(*this);
+		std::cout << this->name << " signed the form with the target " << form.getTarget() << "." << std::endl;
+	}
 }

@@ -1,6 +1,8 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
 
+# include <cstdlib>
+# include <ctime>
 # include "AForm.hpp"
 
 class RobotomyRequestForm : public AForm
@@ -11,7 +13,7 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm&	operator=(const RobotomyRequestForm& obj);
 		~RobotomyRequestForm();
 
-		void	execute(Bureaucrat const & executor) const;
+		void	execute(const Bureaucrat& executor) const;
 };
 
 #endif

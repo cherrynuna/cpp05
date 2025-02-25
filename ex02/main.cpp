@@ -22,15 +22,12 @@ int	main(void)
 
 		ShrubberyCreationForm	scf("gaepo");
 		std::cout << scf << std::endl;
-		std::cout << std::endl;
-
-		anna.signForm(scf);
+		anna.signForm(scf);//->beSigned->Form::GradeTooLowException
 		std::cout << scf << std::endl;
 		elsa.signForm(scf);
 		std::cout << scf << std::endl;
-		anna.signForm(scf);
-
-		scf.execute(olaf);
+		anna.signForm(scf);//already signed
+		olaf.executeForm(scf);
 
 		std::cout << std::endl;
 		std::cout << std::endl;
@@ -39,8 +36,7 @@ int	main(void)
 		RobotomyRequestForm	rrf("chris");
 		anna.signForm(rrf);
 		elsa.signForm(rrf);
-
-		rrf.execute(olaf);
+		olaf.executeForm(rrf);
 
 		std::cout << std::endl;
 		std::cout << std::endl;
@@ -50,8 +46,8 @@ int	main(void)
 		anna.signForm(ppf);
 		elsa.signForm(ppf);
 
-		ppf.execute(elsa);
-		ppf.execute(olaf);
+		elsa.executeForm(ppf);
+		olaf.executeForm(ppf);
 	}
 	catch (const std::exception& e)
 	{

@@ -34,6 +34,7 @@ class Bureaucrat
 		void	incrementGrade();
 		void	decrementGrade();
 		void	signForm(AForm& form);
+		void	executeForm(const AForm& form);
 };
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& b);//<<스트림 출력 연산자를 오버라이드

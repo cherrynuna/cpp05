@@ -1,12 +1,11 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(const std::string& name, const int& grade) : name(name)
+Bureaucrat::Bureaucrat(const std::string& name, const int& grade) : name(name), grade(grade)
 {
 	if (grade < 1)
 		throw GradeTooHighException();
 	if (grade > 150)
 		throw GradeTooLowException();
-	this->grade = grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& obj) : name(obj.name)
@@ -21,9 +20,7 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& obj)
 	return (*this);
 }
 
-Bureaucrat::~Bureaucrat()
-{
-}
+Bureaucrat::~Bureaucrat() {}
 
 const std::string	Bureaucrat::getName() const
 {
@@ -50,7 +47,7 @@ void		Bureaucrat::decrementGrade()
 }
 
 
-const char*	Bureaucrat::GradeTooHighException::what() const throw()//클래스의 클래스의 what함수의 동작 구현
+const char*	Bureaucrat::GradeTooHighException::what() const throw()//클래스의 what함수의 동작 구현
 {
 	return ("Grade is too high!");
 }

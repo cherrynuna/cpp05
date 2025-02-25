@@ -12,16 +12,17 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
-void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
+void	RobotomyRequestForm::execute(const Bureaucrat& executor) const
 {
-	if (!(this->getIsSigned()))
-		throw AForm::FormNotSignedException();
-	if (executor.getGrade() > this->getExecuteGrade())
-		throw AForm::GradeTooLowException();
+	static bool initialized = false;
+    if (!initialized)//프로그램 시작 시 한 번만 호출
+	{
+        std::srand(std::time(0));  // 동일한 난수 패턴이지만+매번 다른 시드로 다른 값이 나오게
+        initialized = true;
+    }
 
 	std::cout << "*drilling noises*" << std::endl;
 
-	std::srand(std::time(0));
 	if (std::rand() % 2)
 		std::cout << this->getTarget() << " has been robotomized successfully." << std::endl;
 	else

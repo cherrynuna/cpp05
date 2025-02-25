@@ -12,7 +12,7 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& obj);
 		~ShrubberyCreationForm();
 
-		void	execute(Bureaucrat const & executor) const;
+		void	execute(const Bureaucrat& executor) const;
 };
 
 #endif
