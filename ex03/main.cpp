@@ -50,7 +50,6 @@ int	main(void)
 			return (0);
 		elsa.signForm(*form);
 		form->execute(olaf);
-		delete form;
 	}
 	catch (const std::exception& e)
 	{
