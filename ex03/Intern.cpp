@@ -13,6 +13,7 @@ Intern::Intern(const Intern& obj)
 Intern&	Intern::operator=(const Intern& obj)
 {
 	(void) obj;
+
 	return (*this);
 }
 
@@ -20,7 +21,7 @@ Intern::~Intern() {}
 
 AForm*	Intern::makeForm(const std::string& name, const std::string target)
 {
-	std::string	forms[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
+	std::string	forms[3] = {"ShrubberyCreation", "RobotomyRequest", "PresidentialPardon"};
 	AForm*	meta;
 
 	int	i;
@@ -46,6 +47,6 @@ AForm*	Intern::makeForm(const std::string& name, const std::string target)
 			return (NULL);
 	}
 
-	std::cout << "Intern creates " << name << std::endl;
+	std::cout << "Intern creates " << name << "." << std::endl;
 	return (meta);
 }

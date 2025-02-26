@@ -11,7 +11,20 @@ class Bureaucrat
 	private:
 		const std::string	name;
 		int					grade;//grade 1 is the highest one and 150 the lowest
+	public:
+		Bureaucrat(const std::string& name, const int& grade);
+		Bureaucrat(const Bureaucrat& obj);
+		Bureaucrat&	operator=(const Bureaucrat& obj);
+		~Bureaucrat();
 
+		const std::string	getName() const;
+		int					getGrade() const;
+
+		void	incrementGrade();
+		void	decrementGrade();
+		void	signForm(AForm& form);
+		void	executeForm(const AForm& form);
+		
 		class	GradeTooHighException : public std::exception//상속
 		{
 			public:
@@ -22,19 +35,6 @@ class Bureaucrat
 			public:
 				const char* what() const throw();
 		};
-	public:
-		Bureaucrat(const std::string& name, const int& grade);
-		Bureaucrat(const Bureaucrat& obj);
-		Bureaucrat&	operator=(const Bureaucrat& obj);
-		~Bureaucrat();
-
-		const std::string	getName() const;
-		int			getGrade() const;
-
-		void	incrementGrade();
-		void	decrementGrade();
-		void	signForm(AForm& form);
-		void	executeForm(const AForm& form);
 };
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& b);//<<스트림 출력 연산자를 오버라이드

@@ -15,17 +15,6 @@ class Form
 		bool				isSigned;
 		const int			signGrade;
 		const int			executeGrade;
-
-		class	GradeTooHighException : public std::exception
-		{
-			public:
-				const char*	what() const throw();
-		};
-		class	GradeTooLowException : public std::exception
-		{
-			public:
-				const char*	what() const throw();
-		};
 	public:
 		Form(const std::string& name, const int& sign, const int& execute);
 		Form(const Form& obj);
@@ -38,6 +27,17 @@ class Form
 		const int&			getExecuteGrade() const;
 
 		void	beSigned(const Bureaucrat& bureaucrat);
+
+		class	GradeTooHighException : public std::exception
+		{
+			public:
+				const char*	what() const throw();
+		};
+		class	GradeTooLowException : public std::exception
+		{
+			public:
+				const char*	what() const throw();
+		};
 };
 
 std::ostream& operator<<(std::ostream& out, const Form& b);//<<스트림 출력 연산자를 오버라이드

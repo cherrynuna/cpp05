@@ -11,17 +11,17 @@ class Bureaucrat;
 class AForm
 {
 	private:
-		const std::string	target;
+		const std::string	name;
 		bool				isSigned;
 		const int			signGrade;
 		const int			executeGrade;
 	public:
-		AForm(const std::string& target, const int& sign, const int& execute);
+		AForm(const std::string& name, const int& sign, const int& execute);
 		AForm(const AForm& obj);
 		AForm&	operator=(const AForm& obj);
 		virtual ~AForm();
 
-		const std::string&	getTarget() const;
+		const std::string&	getName() const;
 		const bool&			getIsSigned() const;
 		const int&			getSignGrade() const;
 		const int&			getExecuteGrade() const;

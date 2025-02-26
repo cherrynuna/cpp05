@@ -12,9 +12,8 @@ Form::Form(const Form& obj) : name(obj.name), isSigned(0), signGrade(obj.signGra
 
 Form&	Form::operator=(const Form& obj)
 {
-	// if (this != &obj)
-		
 	(void) obj;
+	
 	return (*this);
 }
 
@@ -65,7 +64,7 @@ std::ostream& operator<<(std::ostream& out, const Form& b)
 		isSigned = "signed";
 	else
 		isSigned = "not signed";
-	out << b.getName() << " can be signed by higher than " << b.getSignGrade() << " and executed by higher than " << b.getExecuteGrade() << ", and it is " << isSigned;
+	out << b.getName() << " can be signed by grades ≥ " << b.getSignGrade() << " and executed by grades ≥ " << b.getExecuteGrade() << ", and it is " << isSigned << ".";
 
 	return (out);
 }

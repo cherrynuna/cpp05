@@ -17,6 +17,7 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& obj)
 {
 	if (this != &obj)
 		this->grade = obj.grade;
+
 	return (*this);
 }
 
@@ -64,11 +65,18 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& b)
 
 void	Bureaucrat::signForm(Form& form)
 {
-	if (form.getIsSigned())
-		std::cout << this->name << " couldn’t sign " << form.getName() << " because it's already signed." << std::endl;
-	else
+	try
 	{
-		form.beSigned(*this);
-		std::cout << this->name << " signed " << form.getName() << "." << std::endl;
+		if (form.getIsSigned())
+			std::cout << this->name << " couldn’t sign " << form.getName() << " because it's already signed." << std::endl;
+		else
+		{
+			form.beSigned(*this);
+			std::cout << this->name << " signed " << form.getName() << "." << std::endl;
+		}
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
 	}
 }

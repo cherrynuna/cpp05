@@ -22,7 +22,7 @@ int	main(void)
 
 		Intern		intern;
 
-		form = intern.makeForm("ShrubberyCreationForm", "gaepo");
+		form = intern.makeForm("ShrubberyCreation", "gaepo");
 		if (!form)
 			return (0);
 		elsa.signForm(*form);
@@ -33,7 +33,7 @@ int	main(void)
 		std::cout << std::endl;
 		std::cout << std::endl;
 
-		form = intern.makeForm("RobotomyRequestForm", "chris");
+		form = intern.makeForm("RobotomyRequest", "chris");
 		if (!form)
 			return (0);
 		anna.signForm(*form);
@@ -45,7 +45,7 @@ int	main(void)
 		std::cout << std::endl;
 		std::cout << std::endl;
 
-		form = intern.makeForm("PresidentialPardonForm", "inryu");
+		form = intern.makeForm("PresidentialPardon", "inryu");
 		if (!form)
 			return (0);
 		elsa.signForm(*form);

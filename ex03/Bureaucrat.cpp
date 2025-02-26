@@ -17,6 +17,7 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& obj)
 {
 	if (this != &obj)
 		this->grade = obj.grade;
+
 	return (*this);
 }
 
@@ -64,20 +65,31 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& b)
 
 void	Bureaucrat::signForm(AForm& form)
 {
-	if (form.getIsSigned())
-		std::cout << this->name << " couldn’t sign the form with the target " << form.getTarget() << " because it's already signed." << std::endl;
-	else
+	try
 	{
-		form.beSigned(*this);
-		std::cout << this->name << " signed the form with the target " << form.getTarget() << "." << std::endl;
+		if (form.getIsSigned())
+			std::cout << this->name << " couldn’t sign " << form.getName() << " because it's already signed." << std::endl;
+		else
+		{
+			form.beSigned(*this);
+			std::cout << this->name << " signed " << form.getName() << "." << std::endl;
+		}
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
 	}
 }
 
 void	Bureaucrat::executeForm(const AForm& form)
 {
-	if (!(form.getIsSigned()))
-		throw AForm::FormNotSignedException();
-	if (this->grade > form.getExecuteGrade())
-		throw AForm::GradeTooLowException();
-	form.execute(*this);
+	try
+	{
+		form.execute(*this);
+		std::cout << this->name << " executed " << form.getName() << "." << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }

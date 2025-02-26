@@ -19,8 +19,8 @@ ${NAME}	:	${OBJS}
 
 clean	:
 	@${RM} ${OBJS}
+	@${RM} $(wildcard *_shrubbery)
 	@echo "clear"
-	@rm gaepo_shrubbery
 
 fclean	:	clean
 	@${RM} ${NAME}

@@ -1,6 +1,6 @@
 #include "AForm.hpp"
 
-AForm::AForm(const std::string& name, const int& sign, const int& execute) : target(name), isSigned(0), signGrade(sign), executeGrade(execute)
+AForm::AForm(const std::string& name, const int& sign, const int& execute) : name(name), isSigned(0), signGrade(sign), executeGrade(execute)
 {
 	if (sign < 1 || execute < 1)
 		throw GradeTooHighException();
@@ -8,21 +8,20 @@ AForm::AForm(const std::string& name, const int& sign, const int& execute) : tar
 		throw GradeTooLowException();
 }
 
-AForm::AForm(const AForm& obj) : target(obj.target), isSigned(0), signGrade(obj.signGrade), executeGrade(obj.executeGrade) {}
+AForm::AForm(const AForm& obj) : name(obj.name), isSigned(0), signGrade(obj.signGrade), executeGrade(obj.executeGrade) {}
 
 AForm&	AForm::operator=(const AForm& obj)
 {
-	// if (this != &obj)
-		
 	(void) obj;
+
 	return (*this);
 }
 
 AForm::~AForm() {}
 
-const std::string&	AForm::getTarget() const
+const std::string&	AForm::getName() const
 {
-	return (this->target);
+	return (this->name);
 }
 
 const bool&			AForm::getIsSigned() const
@@ -70,7 +69,7 @@ std::ostream& operator<<(std::ostream& out, const AForm& b)
 		isSigned = "signed";
 	else
 		isSigned = "not signed";
-	out << "A form with the target " << b.getTarget() << " can be signed by grades ≥ " << b.getSignGrade() << " and executed by higher than " << b.getExecuteGrade() << ", and it is " << isSigned;
+	out << b.getName() << " can be signed by grades ≥ " << b.getSignGrade() << " and executed by grades ≥ " << b.getExecuteGrade() << ", and it is " << isSigned << ".";
 
 	return (out);
 }

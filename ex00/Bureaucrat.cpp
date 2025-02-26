@@ -17,6 +17,7 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& obj)
 {
 	if (this != &obj)
 		this->grade = obj.grade;
+		
 	return (*this);
 }
 
