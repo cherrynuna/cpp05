@@ -22,7 +22,7 @@ Intern::~Intern() {}
 AForm*	Intern::makeForm(const std::string& name, const std::string target)
 {
 	std::string	forms[3] = {"ShrubberyCreation", "RobotomyRequest", "PresidentialPardon"};
-	AForm*	meta;
+	AForm*	meta = NULL;
 
 	int	i;
 	for (i = 0; i < 3; i++)

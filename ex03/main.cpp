@@ -13,7 +13,7 @@
 int	main(void)
 {
 	// atexit(f);
-	AForm*	form;
+	AForm*	form = NULL;
 	try
 	{
 		Bureaucrat	elsa("Elsa", 25);
